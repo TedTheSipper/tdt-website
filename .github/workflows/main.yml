@@ -22,7 +22,7 @@ jobs:
           npm i
           npm run build
       - name: Deploy to Neocities
-        uses: TedTheSipper/tdt-website@main
+        uses: bcomnes/deploy-to-neocities@v3
         with:
           api_key: ${{ secrets.NEOCITIES_API_TOKEN}}
           cleanup: false
