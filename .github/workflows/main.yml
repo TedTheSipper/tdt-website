@@ -1,0 +1,28 @@
+name: Deploy to neocities
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: | 
+          npm i
+          npm run build
+      - name: Deploy to Neocities
+        uses: bcomnes/neocities-action@v3
+        with:
+          api_key: ${{ secrets.7127afeaf34379a1e229f930272179e3 }}
+          cleanup: false
+          neocities_supporter: false
+          preview_before_deploy: true
+          dist_dir: public
+
+          
